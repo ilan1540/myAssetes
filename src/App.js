@@ -1,9 +1,11 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import { rrfProps } from './redux/store';
 import store from './redux/store';
-
+import Navbar from './layout/Navbar';
+import Routes from './routes/Routes';
 import './App.css';
 
 function App() {
@@ -11,7 +13,10 @@ function App() {
     <Provider store={store}>
       <ReactReduxFirebaseProvider {...rrfProps}>
         <div className="App">
-          <h1>app</h1>
+          <BrowserRouter>
+            <Navbar />
+            <Routes />
+          </BrowserRouter>
         </div>
       </ReactReduxFirebaseProvider>
     </Provider>
