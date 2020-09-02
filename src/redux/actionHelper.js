@@ -1,6 +1,7 @@
 import {
   PICK_DATE,
   SAVE_SECOM,
+  SAVE_PRATIM,
   HAFKADOT,
   SET_HAFKADA,
   ADD_HAFKADA,
@@ -19,6 +20,14 @@ export const getSecom = (secom) => {
   return {
     type: SAVE_SECOM,
     payload: secom,
+  };
+};
+
+// save the pratim to redux
+export const getPratim = (pratim) => {
+  return {
+    type: SAVE_PRATIM,
+    payload: pratim,
   };
 };
 

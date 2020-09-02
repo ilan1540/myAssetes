@@ -33,10 +33,12 @@ export const Hafkadot = ({ id, hafkadot, del, save }) => {
                   </td>
 
                   <td>{rec.date}</td>
+                  <td>{rec.pratim}</td>
                   <td>{numberWithCommas(rec.secom)}</td>
                 </tr>
               ))}
             <tr>
+              <td></td>
               <td></td>
               <th scope="row">סך הפקדות</th>
               <td>{numberWithCommas(total)}</td>

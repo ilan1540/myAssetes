@@ -12,6 +12,7 @@ import { EditHapkadot } from '../componants/assetes/EditHapkadot';
 import { AllAssets } from '../componants/assetes/AllAssete';
 import { EeditShiarok } from '../componants/assetes/EeditShiarok';
 import { EditKopa } from '../componants/assetes/EditKopa';
+import { OptionSelect } from '../componants/options/OptionSelect';
 
 const Routes = () => {
   // const auth = useSelector((state) => state.firebase.auth);
@@ -25,6 +26,7 @@ const Routes = () => {
       <Route exact path="/editHafkada/:id" component={EditHapkadot} />
       <Route exact path="/editShiarok/:id" component={EeditShiarok} />
       <Route exact path="/editkopa/:id" component={EditKopa} />
+      <Route exact path="/options" component={OptionSelect} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
     </Switch>

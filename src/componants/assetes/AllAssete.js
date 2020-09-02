@@ -21,7 +21,9 @@ export const AllAssets = () => {
     var sum = 0;
     kopot &&
       kopot.map((rec) => {
-        sum = sum + rec.shiarok[rec.shiarok.length - 1].secom;
+        if (rec.shiarok.length > 0) {
+          sum = sum + rec.shiarok[rec.shiarok.length - 1].secom;
+        }
         return null;
       });
     setTotal(sum);
@@ -71,12 +73,16 @@ export const AllAssets = () => {
                       <td>{rec.motavName}</td>
                       <td>{rec.codeMaslol}</td>
                       <td>{rec.maslolName}</td>
-                      <td>{rec.shiarok[rec.shiarok.length - 1].date}</td>
-                      <td>
-                        {numberWithCommas(
-                          rec.shiarok[rec.shiarok.length - 1].secom
-                        )}
-                      </td>
+                      {rec.shiarok.length > 0 ? (
+                        <td>{rec.shiarok[rec.shiarok.length - 1].date}</td>
+                      ) : null}
+                      {rec.shiarok.length > 0 ? (
+                        <td>
+                          {numberWithCommas(
+                            rec.shiarok[rec.shiarok.length - 1].secom
+                          )}
+                        </td>
+                      ) : null}
                     </tr>
                   ))}
               </tbody>

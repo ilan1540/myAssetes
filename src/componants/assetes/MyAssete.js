@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useFirestoreConnect } from 'react-redux-firebase';
+import { useFirestore } from 'react-redux-firebase';
 import { Link } from 'react-router-dom';
 import { numberWithCommas } from '../globalFunc';
 import { MiniNav } from '../helpers/MiniNav';
 
 export const MyAssete = (props) => {
+  const firestore = useFirestore();
   useFirestoreConnect(
     [`kopot/${props.match.params.id}`],
     [props.match.params.id]
@@ -130,7 +132,7 @@ export const MyAssete = (props) => {
                 />
                 <div className="card xborder" style={{ width: '18rem' }}>
                   <div className="card-body pt-0 px-0">
-                    {shiarok ? (
+                    {shiarok && indexShiarok > 0 ? (
                       <div>
                         <h4 className="card-title m-2">
                           שווי ליום <span>{shiarok[indexShiarok].date}</span>
@@ -148,6 +150,20 @@ export const MyAssete = (props) => {
             <Link to="/allassets" className="btn btn-primary btn-block">
               <i className="fas fa-reeow-circle-rigth">GO Back</i>
             </Link>
+            <button
+              className="btn btn-danger btn-block"
+              onClick={async (e) => {
+                e.preventDefault();
+
+                return await firestore
+                  .collection('kopot')
+                  .doc(kopot.id)
+                  .delete()
+                  .then(() => props.history.push('/allassets'));
+              }}
+            >
+              delete
+            </button>
           </form>
         </div>
       ) : null}

@@ -20,7 +20,7 @@ export const AddKopa = (props) => {
       codeMaslol: codeMaslol,
       dNihol: dNihol,
       hafkadot: [],
-      shiarok: [{ date: '31/12/2019', secom: 0 }],
+      shiarok: [],
     };
     return firestore
       .collection('kopot')

@@ -37,6 +37,7 @@ export const EditHapkadot = (props) => {
     const addHapkada = {
       secom: Number(helpers.secom),
       date: helpers.date,
+      pratim: helpers.pratim,
     };
     setHafkada([...hafkada, addHapkada]);
   };

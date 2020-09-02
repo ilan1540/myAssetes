@@ -1,8 +1,15 @@
-import { PICK_DATE, SAVE_SECOM, HAFKADOT, ADD_HAFKADA } from './types';
+import {
+  PICK_DATE,
+  SAVE_SECOM,
+  SAVE_PRATIM,
+  HAFKADOT,
+  ADD_HAFKADA,
+} from './types';
 
 const initialState = {
   date: '',
   secom: '',
+  pratim: '',
   hafkadot: [],
 };
 
@@ -17,6 +24,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         secom: action.payload,
+      };
+    case SAVE_PRATIM:
+      return {
+        ...state,
+        pratim: action.payload,
       };
     case HAFKADOT:
       return {
