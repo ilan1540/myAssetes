@@ -40,15 +40,21 @@ const Navbar = () => {
               שוטף
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a className="dropdown-item" href="/addkopa">
-                Add kopa
+              <a className="dropdown-item" href="/addIncome">
+                Add income
+              </a>
+              <a className="dropdown-item" href="/allincomes">
+                All incomes
               </a>
               <a className="dropdown-item" href="/allassets">
                 All Assetes
               </a>
               <div className="dropdown-divider"></div>
-              <a className="dropdown-item" href="/add">
-                add Rec
+              <a className="dropdown-item" href="/addExp">
+                Add Expenses
+              </a>
+              <a className="dropdown-item" href="/allExp">
+                All Expenses
               </a>
             </div>
           </li>
@@ -67,6 +73,12 @@ const Navbar = () => {
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
               <a className="dropdown-item" href="/options">
                 אפשרויות
+              </a>
+              <a className="dropdown-item" href="/sogHeandel">
+                ניהול סוגים
+              </a>
+              <a className="dropdown-item" href="/readExcel">
+                יבוא קובץ אקסל
               </a>
             </div>
           </li>

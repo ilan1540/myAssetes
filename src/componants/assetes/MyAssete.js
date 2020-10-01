@@ -15,6 +15,13 @@ export const MyAssete = (props) => {
   const kopot = useSelector(
     (state) => state.firestore.ordered.kopot && state.firestore.ordered.kopot[0]
   );
+
+  useFirestoreConnect(['options']);
+  const options = useSelector(
+    (state) =>
+      state.firestore.ordered.options && state.firestore.ordered.options[0]
+  );
+
   const [total, setTotal] = useState(0);
   const [indexShiarok, setIndexShiarok] = useState(0);
   const [shiarok, setShiarok] = useState(0);
@@ -60,12 +67,17 @@ export const MyAssete = (props) => {
           <form>
             <div className="row">
               <div className="col-md-4">
-                <Link
-                  to={`/editKopa/${kopot.id}`}
-                  className="btn btn-secondary btn-block"
-                >
-                  עדכן
-                </Link>
+                {options && options.allowEdit ? (
+                  <Link
+                    to={`/editKopa/${kopot.id}`}
+                    className="btn btn-secondary btn-block"
+                  >
+                    עדכן
+                  </Link>
+                ) : (
+                  <div className="btn btn-secondary btn-block">פרטי קופה</div>
+                )}
+
                 <table className="table table-borderless xborder table-sm">
                   <tbody>
                     <tr>
@@ -96,12 +108,16 @@ export const MyAssete = (props) => {
                 </table>
               </div>
               <div className="col-md-3">
-                <Link
-                  to={`/editHafkada/${kopot.id}`}
-                  className="btn btn-secondary btn-block"
-                >
-                  עדכן
-                </Link>
+                {options && options.allowEdit ? (
+                  <Link
+                    to={`/editHafkada/${kopot.id}`}
+                    className="btn btn-secondary btn-block"
+                  >
+                    עדכן
+                  </Link>
+                ) : (
+                  <div className="btn btn-secondary btn-block">פרטי הפקדות</div>
+                )}
                 <table className="table table-borderless table-sm xborder">
                   <thead>
                     <tr>
@@ -125,11 +141,16 @@ export const MyAssete = (props) => {
                 </table>
               </div>
               <div className="col-md-4 ">
-                <MiniNav
-                  moveFor={moveFor}
-                  moveBack={moveBack}
-                  edit={`/editShiarok/${kopot.id}`}
-                />
+                {options && options.allowEdit ? (
+                  <MiniNav
+                    moveFor={moveFor}
+                    moveBack={moveBack}
+                    edit={`/editShiarok/${kopot.id}`}
+                  />
+                ) : (
+                  <div className="btn btn-secondary btn-block">שווי מעודכן</div>
+                )}
+
                 <div className="card xborder" style={{ width: '18rem' }}>
                   <div className="card-body pt-0 px-0">
                     {shiarok && indexShiarok > 0 ? (
@@ -148,22 +169,24 @@ export const MyAssete = (props) => {
             </div>
 
             <Link to="/allassets" className="btn btn-primary btn-block">
-              <i className="fas fa-reeow-circle-rigth">GO Back</i>
+              <i className="fas fa-arrow-alt-circle-left">חזור</i>
             </Link>
-            <button
-              className="btn btn-danger btn-block"
-              onClick={async (e) => {
-                e.preventDefault();
+            {options && options.allowDelete ? (
+              <button
+                className="btn btn-danger btn-block"
+                onClick={async (e) => {
+                  e.preventDefault();
 
-                return await firestore
-                  .collection('kopot')
-                  .doc(kopot.id)
-                  .delete()
-                  .then(() => props.history.push('/allassets'));
-              }}
-            >
-              delete
-            </button>
+                  return await firestore
+                    .collection('kopot')
+                    .doc(kopot.id)
+                    .delete()
+                    .then(() => props.history.push('/allassets'));
+                }}
+              >
+                delete
+              </button>
+            ) : null}
           </form>
         </div>
       ) : null}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFirestoreConnect, useFirestore } from 'react-redux-firebase';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 export const EditKopa = (props) => {
   const firestore = useFirestore();
@@ -119,8 +120,11 @@ export const EditKopa = (props) => {
           className="btn btn-sm  btn-primary btn-block"
           onClick={onSaveEdit}
         >
-          Sav edit
+          Save edit
         </button>
+        <Link to={`/assete/${kopot.id}`} className="btn btn-primary btn-block">
+          <i className="fas fa-arrow-alt-circle-left">חזור</i>
+        </Link>
       </div>
     );
   } else return null;

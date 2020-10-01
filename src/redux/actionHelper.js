@@ -5,6 +5,7 @@ import {
   HAFKADOT,
   SET_HAFKADA,
   ADD_HAFKADA,
+  SET_EXCEL_FILE,
 } from './types';
 
 // get the datePicker
@@ -52,5 +53,13 @@ export const add_hafkada = (res) => {
   return {
     type: ADD_HAFKADA,
     payload: res,
+  };
+};
+
+// set excel wb to redux
+export const setExcelWb = (wb) => {
+  return {
+    type: SET_EXCEL_FILE,
+    payload: wb,
   };
 };

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useFirestore } from 'react-redux-firebase';
+import { Link } from 'react-router-dom';
 
 export const AddKopa = (props) => {
   const [accountNo, setAccountNo] = useState('');
@@ -10,7 +11,7 @@ export const AddKopa = (props) => {
   const [dNihol, setDNihol] = useState('');
   const firestore = useFirestore();
 
-  function addKopa(e) {
+  async function addKopa(e) {
     e.preventDefault();
     const newRec = {
       accountNo: accountNo,
@@ -22,7 +23,7 @@ export const AddKopa = (props) => {
       hafkadot: [],
       shiarok: [],
     };
-    return firestore
+    return await firestore
       .collection('kopot')
       .add(newRec)
       .then(() => props.history.push('/allassets'));
@@ -106,6 +107,9 @@ export const AddKopa = (props) => {
       <button className="btn btn-sm  btn-primary btn-block" onClick={addKopa}>
         Add Sample kopa
       </button>
+      <Link to="/allassets" className="btn btn-primary btn-block">
+        <i className="fas fa-arrow-alt-circle-left">חזור</i>
+      </Link>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import {
   SAVE_PRATIM,
   HAFKADOT,
   ADD_HAFKADA,
+  SET_EXCEL_FILE,
 } from './types';
 
 const initialState = {
@@ -11,10 +12,16 @@ const initialState = {
   secom: '',
   pratim: '',
   hafkadot: [],
+  wb: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case SET_EXCEL_FILE:
+      return {
+        ...state,
+        wb: action.payload,
+      };
     case PICK_DATE:
       return {
         ...state,

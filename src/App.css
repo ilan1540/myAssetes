@@ -7,3 +7,24 @@
 .icom35px {
   font-size: 35px;
 }
+
+.mylist {
+  padding: 5px;
+  font-weight: bold;
+  background-color: rgb(206, 182, 174);
+}
+
+.line {
+  background-color: silver;
+}
+.line:nth-of-typer(even) {
+  background-color: coral;
+}
+ul.list-group {
+  height: 250px;
+  width: 80%;
+}
+ul.list-group {
+  overflow: hidden;
+  overflow-y: scroll;
+}

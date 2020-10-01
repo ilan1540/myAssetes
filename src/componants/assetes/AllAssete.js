@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useFirestoreConnect } from 'react-redux-firebase';
 import { Link } from 'react-router-dom';
 import { numberWithCommas } from '../globalFunc';
+import { PageHeader } from '../helpers/PageHeader';
 
 export const AllAssets = () => {
   const [total, setTotal] = useState(0);
@@ -15,6 +16,11 @@ export const AllAssets = () => {
   ]);
   const kopot = useSelector(
     (state) => state.firestore.ordered.kopot && state.firestore.ordered.kopot
+  );
+  useFirestoreConnect(['options']);
+  const options = useSelector(
+    (state) =>
+      state.firestore.ordered.options && state.firestore.ordered.options[0]
   );
 
   useEffect(() => {
@@ -31,16 +37,21 @@ export const AllAssets = () => {
 
   return (
     <div className="container mt-3">
-      <h1 className="text-center">
-        All <span className="text-primary">Assetes</span>
-      </h1>
-      <div className="row">
-        <div className="col-md-1">
-          <Link to="/addkopa">
-            <i className="fas icom35px fa-plus-circle"></i>
-          </Link>
+      <PageHeader word1="רשימת" word2="נכסים" />
+
+      <div className="row justify-content-between">
+        {options && options.allowAdd ? (
+          <div className="col-md-1">
+            <Link to="/addkopa">
+              <i className="fas icom35px fa-plus-circle"></i>
+            </Link>
+          </div>
+        ) : null}
+        <div className="col-md-5"></div>
+        <div className="col-md-4">
+          <p>סה"כ שווי נכסים</p>
         </div>
-        <div className="col-md-11">{numberWithCommas(total)}</div>
+        <div className="col-md-2">{numberWithCommas(total)}</div>
       </div>
       <div className="row">
         <div className="col-md-12">

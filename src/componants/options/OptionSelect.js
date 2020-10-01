@@ -22,7 +22,7 @@ export const OptionSelect = (props) => {
       .collection('options')
       .doc('allow')
       .set(options)
-      .then(() => props.history.push('/'));
+      .then(() => props.history.push('/home'));
     return null;
   };
 
